@@ -1,20 +1,16 @@
 const express = require("express");
-const productSchema = require("../models/product");
-const categorieSchema = require("../models/categorie");
-
+const productoSchema = require("../models/producto");
+const categoriaSchema = require("../models/categoria");
 const router = express.Router();
 
-// Crear Producto
-router.post("/product", (req, res) => {
+router.post("/producto", (req, res) => {
   const { nombre, precio, descripcion, categoria } = req.body;
-  
-  categorieSchema.findById(categoria)
+  categoriaSchema.findById(categoria)
     .then((cat) => {
       if (!cat) {
-        return res.status(404).json({ message: "Categoría no encontrada" });
+        return res.status(404).json({ message: "No se encontro la categoria" });
       }
-
-      const product = new productSchema({
+      const product = new productoSchema({
         nombre,
         precio,
         descripcion,
@@ -27,44 +23,41 @@ router.post("/product", (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
-router.get("/product", (req, res) => {
-  productSchema
+router.get("/producto", (req, res) => {
+  productoSchema
     .find()
     .populate('categoria', 'nombre')
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-router.get("/product/:id", (req, res) => {
+router.get("/producto/:id", (req, res) => {
   const { id } = req.params;
-  productSchema
+  productoSchema
     .findById(id)
     .populate('categoria', 'nombre')
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-
-router.put("/product/:id", (req, res) => {
+router.put("/producto/:id", (req, res) => {
   const { id } = req.params;
   const { nombre, precio, descripcion, categoria } = req.body;
-
-  categorieSchema.findById(categoria)
+  categoriaSchema.findById(categoria)
     .then((cat) => {
       if (!cat) {
-        return res.status(404).json({ message: "Categoría no encontrada" });
+        return res.status(404).json({ message: "No se encontro la categoria" });
       }
-
-      return productSchema.updateOne({ _id: id }, { $set: { nombre, precio, descripcion, categoria } });
+      return productoSchema.updateOne({ _id: id }, { $set: { nombre, precio, descripcion, categoria }});
     })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-// Eliminar Producto
-router.delete("/product/:id", (req, res) => {
+
+router.delete("/producto/:id", (req, res) => {
   const { id } = req.params;
-  productSchema
+  productoSchema
     .deleteOne({ _id: id })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));

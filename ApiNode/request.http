@@ -3,10 +3,10 @@ POST http://localhost:4000/api/user HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre":"daniela",
-    "edad":16,
-    "correo":"daniela@gmail.com",
-    "contrasenia":"1234"
+    "nombre":"king",
+    "edad":18,
+    "correo":"burguer@gmail.com",
+    "contrasenia":"135556"
 }
 
 ###
@@ -15,10 +15,10 @@ POST http://localhost:4000/api/product HTTP/1.1
 Content-Type: application/json
 
 {
-  "nombre": "Nombre del Producto",
-  "precio": 10000,
-  "descripcion": "Descripción detallada del producto",
-  "categoria": "66a4250c90bcae73e91a38c6"
+  "nombre": "doble queso",
+  "precio": 34758,
+  "descripcion": "ESTA BUENA",
+  "categoria": "66a4250c90bcae73e78c89v"
 }
 
 ###
@@ -27,7 +27,7 @@ POST http://localhost:4000/api/categorie HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre":"Electrodomesticos"
+    "nombre":"alimentos"
 }
 
 ###
@@ -39,9 +39,9 @@ PUT http://localhost:4000/api/user/660f5fa3d02ec4955d7b704a HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre":"David",
-    "edad":20,
-    "correo":"manuela@gmail.com"
+    "nombre":"mcdonals",
+    "edad":30,
+    "correo":"mejor@gmail.com"
 }
 ###
 

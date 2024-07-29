@@ -3,7 +3,7 @@ const categorieSchema = require("../models/categorie");
 
 const router = express.Router();
 
-// Crear Categoría
+
 router.post("/categorie", (req, res) => {
   const categorie = new categorieSchema(req.body);
   categorie.save()
